@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Color Game</title>
+    <link rel="stylesheet" href="style/style.css">
+</head>
+<body class="radialRed">
+    <table id="tblMain">
+        <tr>
+            <h1 id="player">Player 1</h1>
+        </tr>
+        <tr>
+            <table id="tblColor" align="center">
+                <tr>1. Pick a color</tr>
+                <tr>
+                    <td>
+                        <button class="colorPicker" id="colorRed" onclick="pickAColor('red')" 
+                            style="background-color: red;"></button>
+                    </td>
+                    <td>
+                        <button class="colorPicker" id="colorGreen" onclick="pickAColor('green')" 
+                            style="background-color: green;"></button>
+                    </td>
+                    <td>
+                        <button class="colorPicker" id="colorBlue" onclick="pickAColor('blue')" 
+                            style="background-color: blue;"></button>
+                    </td>
+                    <td>
+                        <button class="colorPicker" id="colorYellow" onclick="pickAColor('yellow')" 
+                            style="background-color: yellow;"></button>
+                    </td>
+                </tr>
+                <tr align="center">
+                    <td id="colorField" style="color: rgb(130, 187, 116);" colspan="4">
+                        Selected color
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="4">
+                        2. Click on field
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <button class="gameBtn" id="00" onclick="mainFunction('00')"></button>
+                    </td>
+                    <td>
+                        <button class="gameBtn" id="01" onclick="mainFunction('01')"></button>
+                    </td>
+                    <td>
+                        <button class="gameBtn" id="02" onclick="mainFunction('02')"></button>
+                    </td>
+                    <td>
+                        <button class="gameBtn" id="03" onclick="mainFunction('03')"></button>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <button class="gameBtn" id="10" onclick="mainFunction('10')"></button>
+                    </td>
+                    <td>
+                        <button class="gameBtn" id="11" onclick="mainFunction('11')"></button>
+                    </td>
+                    <td>
+                        <button class="gameBtn" id="12" onclick="mainFunction('12')"></button>
+                    </td>
+                    <td>
+                        <button class="gameBtn" id="13" onclick="mainFunction('13')"></button>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <button class="gameBtn" id="20" onclick="mainFunction('20')"></button>
+                    </td>
+                    <td>
+                        <button class="gameBtn" id="21" onclick="mainFunction('21')"></button>
+                    </td>
+                    <td>
+                        <button class="gameBtn" id="22" onclick="mainFunction('22')"></button>
+                    </td>
+                    <td>
+                        <button class="gameBtn" id="23" onclick="mainFunction('23')"></button>
+                    </td>
+                </tr>
+            </table>
+        </tr>
+        <tr class="pointer">
+            <td class="pointsField">
+                <div id="pointsC">
+                </div>
+            </td>
+            <td class="pointsField" > 
+                <div id="pointsA">
+                    Player 1 points:
+                </div>                
+            </td>
+            <td class="pointsField">
+                <div id="pointsB">
+                    Player 2 points:
+                </div>
+            </td>
+        </tr>
+    </table>
+</body>
+<script src="script/script.js"></script>
+</html>
