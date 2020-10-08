@@ -4,7 +4,7 @@
 My own original game idea written in HTML, CSS, JS
 * this game features both: luck and strategy
 
-![](Screen.gif | width=300) 
+![](Screen.gif = 383x282) 
 
 ## Features
 * 2-player game with 4x3 gameboard
