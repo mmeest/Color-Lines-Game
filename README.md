@@ -1,3 +1,4 @@
+![header](https://capsule-render.vercel.app/api?type=slice&color=auto&height=130&section=header&text=Color%20game&fontSize=30&fontAlign=80)
 <img src="Screenshot.jpg" width="500px">
 
 # Color-Lines-Game
@@ -23,3 +24,5 @@ My own original game idea written in HTML, CSS, JS
 * whoever gets 100 points first is the winner
 
 # GOOD LUCK !
+
+![footer](https://capsule-render.vercel.app/api?type=slice&color=auto&height=130&section=footer)
