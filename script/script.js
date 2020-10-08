@@ -15,7 +15,6 @@ var gameOver = 0
 function pickAColor(colorValue){
     if(colorValue != "" && gameOver == 0){
         selectedColor = colorValue
-        /* document.getElementById('colorField').style.backgroundColor = colorValue */
         scl('colorField', colorValue)
         gameStarted = 1
     } else {
@@ -30,7 +29,6 @@ function mainFunction(btnID){
     availableFields = ["00", "01", "02", "03", "10", "11", "12", "13", "20", "21", "22", "23"]
     availableColors = ["red", "green", "blue", "yellow", ""]
     if(gameStarted == 1 && gameOver == 0 && bcl("colorField") != bcl(btnID)){  
-        /* document.getElementById(btnID).style.backgroundColor = selectedColor */
         scl(btnID, selectedColor)
         spl(availableFields, btnID)
         spl(availableColors, NaN)
@@ -62,7 +60,6 @@ function mainFunction(btnID){
                     points += 2
                 }
         }
-
         if(currentPlayer > 0){
             player1Points += points
             inh("player", "Player 2")
@@ -73,6 +70,9 @@ function mainFunction(btnID){
                 inh("player", "Player 1 Wins!   " + player1Points + " : " + player2Points)
                 inh("noteOne", "Game Over!")
                 inh("noteTwo", "Game Over!")
+                document.getElementById("selOne").style.display = "none"
+                scl("colorField", "white")
+                document.getElementById("selTwo").style.removeProperty( 'display' )
                 gameOver = 1
             }
         } else {
@@ -85,6 +85,9 @@ function mainFunction(btnID){
                 inh("player", "Player 2 Wins!   " + player2Points + " : " + player1Points)
                 inh("noteOne", "Game Over!")
                 inh("noteTwo", "Game Over!")
+                document.getElementById("selOne").style.display = "none"
+                scl("colorField", "white")
+                document.getElementById("selTwo").style.removeProperty( 'display' )
                 gameOver = 1
             }
         }
