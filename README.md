@@ -5,8 +5,9 @@ My own original game idea written in HTML, CSS, JS
 * this game features both: luck and strategy
 
 ## Features
+* game in 100 lines of code
 * 2-player game with 4x3 gameboard
-* points counter up
+* 4 different colors to choose from
 
 ## How to play
 * 2 players play in turn
@@ -16,7 +17,7 @@ My own original game idea written in HTML, CSS, JS
 * same time computer will change randomly 3 colors fields on gameboard
 * goal is to get 3 or 4 same field in one line(horizontally, vertically or diagonally)
 * 3 in a row will give 3 points
-* 4 in a row will give 8 points
+* 4 in a row will give 11 points
 * whoever gets 100 points is the winner
 
 
