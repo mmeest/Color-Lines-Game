@@ -64,7 +64,7 @@ function mainFunction(btnID){
                 document.getElementById(item[2]).style.backgroundColor == document.getElementById(btnID).style.backgroundColor &&
                 document.getElementById(item[3]).style.backgroundColor == document.getElementById(btnID).style.backgroundColor &&
                 item.includes(btnID )){
-                    points += 5
+                    points += 2
                 }
         }
         if(currentPlayer > 0){
