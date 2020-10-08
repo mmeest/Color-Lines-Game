@@ -10,16 +10,13 @@ var gameStarted = 0
 var availableColors = []
 var availableFields = []
 var computerSelectedField = ""
-var computerSelectedField2 = ""
-var computerSelectedField3 = ""
 var computerSelectedColor = ""
-var currentColor = ""
-var restrictedList = []
 var gameOver = 0
 function pickAColor(colorValue){
     if(colorValue != "" && gameOver == 0){
         selectedColor = colorValue
-        document.getElementById('colorField').style.backgroundColor = colorValue
+        /* document.getElementById('colorField').style.backgroundColor = colorValue */
+        scl('colorField', colorValue)
         gameStarted = 1
     } else {
         return
@@ -32,69 +29,88 @@ function mainFunction(btnID){
     points = 0
     availableFields = ["00", "01", "02", "03", "10", "11", "12", "13", "20", "21", "22", "23"]
     availableColors = ["red", "green", "blue", "yellow", ""]
-    if(gameStarted == 1 && gameOver == 0 &&
-        document.getElementById("colorField").style.backgroundColor != 
-            document.getElementById(btnID).style.backgroundColor){   
-        currentColor = document.getElementById("colorField").style.color
-        document.getElementById(btnID).style.backgroundColor = selectedColor
-        availableFields.splice(availableFields.indexOf(btnID), 1)
-        availableColors.splice(availableColors.indexOf(), 1)
+    if(gameStarted == 1 && gameOver == 0 && bcl("colorField") != bcl(btnID)){  
+        /* document.getElementById(btnID).style.backgroundColor = selectedColor */
+        scl(btnID, selectedColor)
+        spl(availableFields, btnID)
+        spl(availableColors, NaN)
 
         computerMove(availableFields)
-        availableFields.splice(availableFields.indexOf(computerSelectedField), 1)
+        spl(availableFields, computerSelectedField)
         computerMove(availableFields)
-        availableFields.splice(availableFields.indexOf(computerSelectedField), 1)
+        spl(availableFields, computerSelectedField)
         computerMove(availableFields)
-        availableFields.splice(availableFields.indexOf(computerSelectedField), 1)
+        spl(availableFields, computerSelectedField)
 
         triple.forEach(triplePoints)
         quatro.forEach(quatroPoints)
 
         function triplePoints(item){
-            if(document.getElementById(item[0]).style.backgroundColor == document.getElementById(btnID).style.backgroundColor &&
-                document.getElementById(item[1]).style.backgroundColor == document.getElementById(btnID).style.backgroundColor &&
-                document.getElementById(item[2]).style.backgroundColor == document.getElementById(btnID).style.backgroundColor &&
+            if(bcl(item[0]) == bcl(btnID) &&
+                bcl(item[1]) == bcl(btnID) &&
+                bcl(item[2]) == bcl(btnID) &&
                 item.includes(btnID)){
                     points += 3
                 }
         }
         function quatroPoints(item){
-            if(document.getElementById(item[0]).style.backgroundColor == document.getElementById(btnID).style.backgroundColor &&
-                document.getElementById(item[1]).style.backgroundColor == document.getElementById(btnID).style.backgroundColor &&
-                document.getElementById(item[2]).style.backgroundColor == document.getElementById(btnID).style.backgroundColor &&
-                document.getElementById(item[3]).style.backgroundColor == document.getElementById(btnID).style.backgroundColor &&
+            if(bcl(item[0]) == bcl(btnID) &&
+                bcl(item[1]) == bcl(btnID) &&
+                bcl(item[2]) == bcl(btnID) &&
+                bcl(item[3]) == bcl(btnID) &&
                 item.includes(btnID )){
                     points += 2
                 }
         }
+
         if(currentPlayer > 0){
             player1Points += points
-            document.getElementById("player").innerHTML = "Player 2"
+            inh("player", "Player 2")
             document.body.classList.add("radialBlue");
             document.body.classList.remove("radialRed")
-            document.getElementById("pointsA").innerHTML = "Player 1 points: " + player1Points
+            inh("pointsA", "Player 1 points: " + player1Points)
             if(player1Points > 99){
-                document.getElementById("player").innerHTML = "Player 1 Wins!   " + player1Points + "/" + player2Points
+                inh("player", "Player 1 Wins!   " + player1Points + " : " + player2Points)
+                inh("noteOne", "Game Over!")
+                inh("noteTwo", "Game Over!")
                 gameOver = 1
             }
         } else {
             player2Points += points
-            document.getElementById("player").innerHTML = "Player 1"
+            inh("player", "Player 1")
             document.body.classList.add("radialRed");
             document.body.classList.remove("radialBlue")
-            document.getElementById("pointsB").innerHTML = "Player 2 points: " +player2Points
+            inh("pointsB", "Player 2 points: " + player2Points)
             if(player2Points > 99){
-                document.getElementById("player").innerHTML = "Player 2 Wins!   " + player2Points + "/" + player1Points
+                inh("player", "Player 2 Wins!   " + player2Points + " : " + player1Points)
+                inh("noteOne", "Game Over!")
+                inh("noteTwo", "Game Over!")
                 gameOver = 1
             }
         }
-        document.getElementById("pointsC").innerHTML = points
+        inh("pointsC", points)
         currentPlayer *= -1
     }  
 }
 function computerMove(){
     computerSelectedColor = availableColors[Math.floor(Math.random() * availableColors.length)]
     computerSelectedField = availableFields[Math.floor(Math.random() * availableFields.length)]
-    document.getElementById(computerSelectedField).style.backgroundColor = computerSelectedColor    
+    scl(computerSelectedField, computerSelectedColor)   
     return computerSelectedField
+}
+
+function inh(valueOne, valueTwo){       // set DOM element text
+    document.getElementById(valueOne).innerHTML = valueTwo
+}
+
+function spl(spliceArray, spliceValue){ // splice element from array
+    return spliceArray.splice(spliceArray.indexOf(spliceValue), 1)
+}
+
+function bcl(someValue){                // get background color value
+    return document.getElementById(someValue).style.backgroundColor
+}
+
+function scl(domID, colValue){          // set background color value
+    document.getElementById(domID).style.backgroundColor = colValue
 }
